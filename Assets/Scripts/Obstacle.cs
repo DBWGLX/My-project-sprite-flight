@@ -5,7 +5,7 @@ public class Obstacle : MonoBehaviour
 {
 
     public float minSize = 0.5f;
-    public float maxSize = 3.0f;
+    public float maxSize = 2.0f;
 
     //速度
     public float minSpeed = 50f;
