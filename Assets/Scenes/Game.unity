@@ -1882,6 +1882,7 @@ MonoBehaviour:
   BoosterFlame: {fileID: 1664515434}
   scoreMultiplier: 10
   uiDocument: {fileID: 1582066476}
+  explosionEffect: {fileID: 8076450568471585830, guid: 668317cff710baf4482171970d706bb0, type: 3}
 --- !u!1001 &4148542864676668341
 PrefabInstance:
   m_ObjectHideFlags: 0

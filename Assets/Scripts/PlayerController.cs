@@ -1,18 +1,19 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 
 public class PlayerController : MonoBehaviour
 {
-    //火箭 移动
+    //1.火箭 移动
     public float thrustForce = 1f;
     public float maxSpeed = 5f;
     Rigidbody2D rb;
 
     public GameObject BoosterFlame;//推进火焰
 
-    // 分数 计算 与 显示
+    //2.分数 计算 与 显示
     private float elapsedTime = 0f;
 
     private float score = 0f;
@@ -23,14 +24,25 @@ public class PlayerController : MonoBehaviour
 
     private Label scoreText;
 
+    //3.碰撞爆炸逻辑
+    public GameObject explosionEffect;
+
+    //4.重开
+    public Button restartButton;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //玩家对象 物理性质
         rb = GetComponent<Rigidbody2D>();
 
-        //分数面板初始化 query
+        //面板 分数初始化 query
         scoreText = uiDocument.rootVisualElement.Q<Label>("ScoreLabel");
+
+        //面板 重启按钮
+        restartButton = uiDocument.rootVisualElement.Q<Button>("RestartButton");
+        restartButton.style.display = DisplayStyle.None; //  隐藏
+        restartButton.clicked += ReloadScene;// 点击 加到list里
     }
 
     void updateMouse(){
@@ -85,7 +97,17 @@ public class PlayerController : MonoBehaviour
 
     //碰撞
     void OnCollisionEnter2D(Collision2D collision){
+        //特效
+        Instantiate(explosionEffect, transform.position, transform.rotation);
+        //飞船消失
         Destroy(gameObject);
+
+        //重开
+        restartButton.style.display = DisplayStyle.Flex;
     }
 
-}
+    void ReloadScene(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+}//the final closing curly brace

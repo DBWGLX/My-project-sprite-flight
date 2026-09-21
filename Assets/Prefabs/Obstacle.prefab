@@ -192,3 +192,4 @@ MonoBehaviour:
   minSpeed: 100
   maxSpeed: 300
   maxSpinSpeed: 10
+  bounceEffectPrefab: {fileID: 7942466826580584264, guid: 2873ddba81682844b8387a95407ff3f9, type: 3}

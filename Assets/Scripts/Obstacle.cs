@@ -14,6 +14,8 @@ public class Obstacle : MonoBehaviour
     //旋转
     public float maxSpinSpeed = 10f;
 
+    //碰撞爆炸
+    public GameObject bounceEffectPrefab;
 
     Rigidbody2D rb;
 
@@ -47,4 +49,13 @@ public class Obstacle : MonoBehaviour
     {
         
     }
+
+    void OnCollisionEnter2D(Collision2D collision){ //和谁碰
+        Vector2 contactPoint = collision.GetContact(0).point;
+        GameObject bounceEffect = Instantiate(bounceEffectPrefab, contactPoint, Quaternion.identity);
+
+        Destroy(bounceEffect, 1f);
+    }
+
+
 }
