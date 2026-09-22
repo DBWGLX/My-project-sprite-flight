@@ -12,23 +12,34 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float thrustForce = 2f;
     public float maxSpeed = 5f;
-
     public float rotateSpeed = 130f;
+
+    [Header("Interaction")]
+    public InputAction moveForward; //推进
+    public InputAction lookPosition; //方向
 
     [Header("Effects")]
     public GameObject boosterFlame;
 
+    //system
     private Rigidbody2D rb;
     private Camera mainCamera;
+
+
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        mainCamera = Camera.main; // 缓存，避免每帧查找
+        mainCamera = Camera.main;//通过标签获取引用，避免后续Camera.main的查找逻辑
 
+        //属性
         boosterFlame.SetActive(false);
-
         rotateSpeed = 200f;
+    
+        //操作
+        moveForward.Enable();
+        lookPosition.Enable();
+
     }
 
     void Update()
@@ -42,17 +53,17 @@ public class PlayerMovement : MonoBehaviour
         if (mouse == null) return;
 
         // 推进器特效
-        if (mouse.leftButton.wasPressedThisFrame)
+        if (moveForward.WasPressedThisFrame())
             boosterFlame.SetActive(true);
-        else if (mouse.leftButton.wasReleasedThisFrame)
+        else if (moveForward.WasReleasedThisFrame())
             boosterFlame.SetActive(false);
 
         // 按住鼠标推进
-        if (mouse.leftButton.isPressed)
+        if (moveForward.IsPressed())
         {
             //方向计算：
             //坐标系变化
-            Vector3 mousePos = mainCamera.ScreenToWorldPoint(mouse.position.value);
+            Vector3 mousePos = mainCamera.ScreenToWorldPoint(lookPosition.ReadValue<Vector2>());
             Vector2 direction = ((Vector2)mousePos - (Vector2)transform.position).normalized;
 
             // 火箭逐渐转向目标

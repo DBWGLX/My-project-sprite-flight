@@ -44,7 +44,7 @@ public class GameChallenger : MonoBehaviour
         // 没有可用障碍物
         if (obstaclePool.Count == 0)
         {
-            Debug.Log("没有可用的 Obstacle");
+            //Debug.Log("没有可用的 Obstacle");
             return;
         }
 

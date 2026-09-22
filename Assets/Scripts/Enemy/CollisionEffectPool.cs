@@ -38,11 +38,11 @@ public class CollisionEffectPool : MonoBehaviour
     // 取一个碰撞特效
     public GameObject GetEffect(Vector2 position)
     {
-        Debug.Log("取特效前，池子数量：" + effectPool.Count);
+        //Debug.Log("取特效前，池子数量：" + effectPool.Count);
 
         if (effectPool.Count == 0)
         {
-            Debug.Log("碰撞特效池已空");
+            //Debug.Log("碰撞特效池已空");
             return null;
         }
 
@@ -53,7 +53,7 @@ public class CollisionEffectPool : MonoBehaviour
 
         effect.SetActive(true);
 
-        Debug.Log("取出一个，剩余：" + effectPool.Count);
+        //Debug.Log("取出一个，剩余：" + effectPool.Count);
 
         return effect;
     }
@@ -61,15 +61,15 @@ public class CollisionEffectPool : MonoBehaviour
     // 回收碰撞特效
     public void ReturnEffect(GameObject effect)
     {
-        Debug.Log(
-            "归还特效：" + effect.name +
-            "，归还前：" + effectPool.Count
-        );
+        // Debug.Log(
+        //     "归还特效：" + effect.name +
+        //     "，归还前：" + effectPool.Count
+        // );
 
         effect.SetActive(false);
 
         effectPool.Enqueue(effect);
 
-        Debug.Log("归还后：" + effectPool.Count);
+        //Debug.Log("归还后：" + effectPool.Count);
     }
 }
