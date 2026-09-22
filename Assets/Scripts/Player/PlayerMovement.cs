@@ -25,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main; // 缓存，避免每帧查找
+
+        boosterFlame.SetActive(false);
+
+        rotateSpeed = 200f;
     }
 
     void Update()
