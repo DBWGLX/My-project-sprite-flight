@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1638031007440881632}
   - component: {fileID: 3940995978113760488}
   - component: {fileID: 8459158848823003308}
-  - component: {fileID: 3885328322866433583}
+  - component: {fileID: 5177807434118753704}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -175,7 +175,7 @@ PolygonCollider2D:
       - {x: 0.5, y: 0}
       - {x: 0.25, y: 0.43359375}
   m_UseDelaunayMesh: 1
---- !u!114 &3885328322866433583
+--- !u!114 &5177807434118753704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,12 +184,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2055633743836466161}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 861d2033487f3ba41b231a35d5a64f1e, type: 3}
+  m_Script: {fileID: 11500000, guid: def3b07b02be4064680945fe5ab266e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   minSize: 0.5
   maxSize: 2
-  minSpeed: 100
+  minSpeed: 50
   maxSpeed: 300
   maxSpinSpeed: 10
   bounceEffectPrefab: {fileID: 7942466826580584264, guid: 2873ddba81682844b8387a95407ff3f9, type: 3}
+  collisionEffectPool: {fileID: 3104812404068284288, guid: da3727bca82842241aa10864b52edff7, type: 3}
